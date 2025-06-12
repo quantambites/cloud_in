@@ -13,9 +13,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
    npm install
-   ```
 
-   ```
 
 2. create env variables in a .env file 
 
