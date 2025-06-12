@@ -1,5 +1,5 @@
 
-![alt text](<WhatsApp Image 2025-06-12 at 15.05.18_6d629820.jpg>)
+
 
 
 
@@ -24,3 +24,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
    npx expo start
+
+
+   
+![alt text](<WhatsApp Image 2025-06-12 at 15.05.18_6d629820.jpg>)
