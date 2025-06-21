@@ -44,6 +44,11 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-dev-launcher/expo-dev-launcher-gradle-plugin" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-dev-launcher/expo-dev-launcher-gradle-plugin" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-dev-menu-interface/android" />
@@ -86,6 +91,14 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/android/expo-gradle-plugin" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/android/expo-gradle-plugin" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin-shared" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-autolinking/scripts/android" />
@@ -95,6 +108,11 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-core/expo-module-gradle-plugin" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-modules-core/expo-module-gradle-plugin" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-notifications/android" />
@@ -128,6 +146,11 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/react-native-edge-to-edge/android" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/react-native-edge-to-edge/android" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/react-native-gesture-handler/android" />
