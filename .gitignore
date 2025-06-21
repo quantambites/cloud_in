@@ -1,0 +1,31 @@
+# ===== General =====
+.DS_Store
+*.log
+.env
+
+
+# ===== Frontend (Expo React Native) =====
+
+cloud_in_frontend/node_modules/
+cloud_in_frontend/.expo/
+cloud_in_frontend/.expo-shared/
+cloud_in_frontend/.env
+cloud_in_frontend/android/
+cloud_in_frontend/ios/
+cloud_in_frontend/build/
+cloud_in_frontend/babel.config.js
+cloud_in_frontend/metro.config.js
+cloud_in_frontend/webpack.config.js
+cloud_in_frontend/dist/
+cloud_in_frontend/web-build/
+
+# ===== Backend (Spring Boot) =====
+
+cloud_in_backend/target/
+cloud_in_backend/.env
+cloud_in_backend/.idea/
+cloud_in_backend/.classpath
+cloud_in_backend/.project
+cloud_in_backend/.settings/
+cloud_in_backend/*.iml
+cloud_in_backend/src/main/resources/application.properties
