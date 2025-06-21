@@ -2,8 +2,7 @@ services:
   - type: web
     name: cloud-in-backend
     env: docker
-    buildCommand: mvn clean package -f backend/pom.xml
-    startCommand: java -jar cloud_in_backend/target/cloud_in_backend-0.0.1-SNAPSHOT.jar
-    branch: main
-    region: singapore
     plan: free
+    region: singapore
+    branch: main
+    rootDir: backend
