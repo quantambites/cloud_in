@@ -5,6 +5,15 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin/settings-plugin" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin/shared" />
+            <option value="$PROJECT_DIR$/cloud_in_frontend/node_modules/@react-native/gradle-plugin/shared-testutil" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/cloud_in_frontend/node_modules/expo-application/android" />

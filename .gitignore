@@ -21,7 +21,6 @@ cloud_in_frontend/web-build/
 
 # ===== Backend (Spring Boot) =====
 
-cloud_in_backend/target/
 cloud_in_backend/.env
 cloud_in_backend/.idea/
 cloud_in_backend/.classpath
