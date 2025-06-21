@@ -1,4 +1,4 @@
-# ☁️ CloudIn – Cloud-Based Image Storing Platform
+<h1 align="center"># ☁️ CloudIn – Cloud-Based Image Storing Platform </h1>
 
 CloudIn is a full-stack application designed to let users upload, view, and manage images in the cloud. It features a Spring Boot backend and an Expo (React Native) frontend.
 
@@ -80,10 +80,10 @@ It is composed of:
 > Place in `cloud_in_frontend/.env`
 
 ```env
-EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cmVuZXdpbmctc2VhZ3VsbC01OC5jbGVyay5hY2NvdW50cy5kZXYk
-EXPO_PUBLIC_API_BASE_URL=http://192.168.0.163:8080/api/urls
-EXPO_PUBLIC_API_MEDIA_URL=http://192.168.0.163:8080/api/media
-EXPO_PUBLIC_MAX_UPLOADS=2
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=
+EXPO_PUBLIC_API_BASE_URL=
+EXPO_PUBLIC_API_MEDIA_URL=
+EXPO_PUBLIC_MAX_UPLOADS=
 ```
 
 ---
@@ -93,12 +93,12 @@ EXPO_PUBLIC_MAX_UPLOADS=2
 > Place in `cloud_in_backend/src/main/resources/application.properties`
 
 ```properties
-spring.application.name=cloud_in_backend
-spring.data.mongodb.uri=mongodb+srv://swarnakarharshendu:27MH0isCGPTpiAU9@cluster0.sdmds.mongodb.net/cloud-in?retryWrites=true&w=majority
-server.address=0.0.0.0
-server.port=8080
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
+spring.application.name=
+spring.data.mongodb.uri=
+server.address=
+server.port=
+spring.servlet.multipart.max-file-size=
+spring.servlet.multipart.max-request-size=
 ```
 
 ⚠️ **Never commit these values directly. Use `.env` and `.gitignore` to keep them secure.**
@@ -132,3 +132,6 @@ cloud_in/
 
 
 ---
+<p align="center">
+  <img src="WhatsApp Image 2025-06-12 at 15.05.18_6d629820.jpg" alt="App Screenshot" width="500"/>
+</p>
