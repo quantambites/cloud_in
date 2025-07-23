@@ -1,23 +1,21 @@
 // email crop and style
 // loader and logo
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import {
-  View,
-  Image,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  Platform 
-} from 'react-native';
+import { useNotification } from "@/context/NotificationContext";
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
-import ActionBar from './ActionBar';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
+import React from 'react';
+import {
+  Alert,
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import Toast from 'react-native-toast-message';
+import ActionBar from './ActionBar';
 
 interface Props {
   urls: string[];
@@ -27,8 +25,10 @@ interface Props {
 }
 
 const ImageList: React.FC<Props> = ({ urls, handleDeleteUrl, selectedImages, setSelectedImages }) => {
+  const { notification, expoPushToken, error } = useNotification();
   const router = useRouter();
   const params = useLocalSearchParams();
+  const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL;
 
   const toggleSelectImage = (url: string) => {
     if (selectedImages.includes(url)) {
@@ -118,17 +118,25 @@ const ImageList: React.FC<Props> = ({ urls, handleDeleteUrl, selectedImages, set
   const failedCount = results.filter(success => !success).length;
 
   if (failedCount === 0) {
-    Toast.show({
-      type: 'success',
-      text1: 'Images Deleted',
-      text2: `${urls.length} image(s) removed successfully 🗑️`,
-    });
+    await fetch(`${API_BASE_URL}/push/send`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: expoPushToken,
+      title: 'Images Deleted',
+      body: `${urls.length} image(s) removed successfully 🗑️`,
+    }),
+  });
   } else {
-    Toast.show({
-      type: 'error',
-      text1: 'Partial Deletion',
-      text2: `${failedCount} image(s) could not be deleted ❌`,
-    });
+    await fetch(`${API_BASE_URL}/push/send`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: expoPushToken,
+      title: 'Partial Deletion',
+      body: `${failedCount} image(s) could not be deleted ❌`,
+    }),
+  });
   }
 };
 

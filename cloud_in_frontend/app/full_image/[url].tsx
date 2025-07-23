@@ -7,8 +7,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useUser } from '@clerk/clerk-expo';
 import * as Sharing from 'expo-sharing';
 import Toast from 'react-native-toast-message';
+import { useNotification } from "@/context/NotificationContext";
 
 export default function FullImageScreen() {
+  const { notification, expoPushToken, error } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const { url } = useLocalSearchParams();
   const router = useRouter();
@@ -47,10 +49,14 @@ export default function FullImageScreen() {
 
       if (downloadResult.status === 200) {
         await MediaLibrary.createAssetAsync(fileUri);
-        Toast.show({
-          type: 'success',
-          text1: 'Download Complete',
-          text2: 'Image saved to gallery 📸',
+        await fetch(`${API_BASE_URL}/push/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: expoPushToken,
+            title: 'Download Complete',
+            body: 'Image saved to gallery 📸',
+          }),
         });
       } else {
         Alert.alert('Error', `Download failed with status code: ${downloadResult.status}`);
@@ -87,22 +93,30 @@ export default function FullImageScreen() {
       const dbData = await dbResponse.json();
       if (!dbResponse.ok) throw new Error(dbData.error || 'MongoDB deletion failed');
 
-      Toast.show({
-      type: 'success',
-      text1: 'Image Deleted',
-      text2: 'The image was removed successfully 🗑️',
-    });
+      await fetch(`${API_BASE_URL}/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: expoPushToken,
+          title: 'Image Deleted',
+          body: 'The image was removed successfully 🗑️',
+        }),
+      });
 
     // Slight delay for toast visibility (optional)
     setTimeout(() => {
       router.replace('/');
     }, 800);
     } catch (error) {
-      Toast.show({
-          type: 'error',
-          text1: 'Upload Failed',
-          text2: 'Something went wrong while deleting.',
-        });
+      await fetch(`${API_BASE_URL}/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: expoPushToken,
+          title: 'Upload Failed',
+          body: 'Something went wrong while deleting.',
+        }),
+      });
     }finally {
     setIsLoading(false);
   }

@@ -7,9 +7,12 @@ import { Ionicons } from '@expo/vector-icons';
 import SigninPage from './auth/Sign-in';
 import SidebarModal from './components/Sidebar';
 import Toast from 'react-native-toast-message';
+import { useNotification } from "@/context/NotificationContext";
 import Constants from 'expo-constants';
 
+
 export default function Page() {
+  const { notification, expoPushToken, error } = useNotification();
   const { user } = useUser();
   const [urls, setUrls] = useState<string[]>([]);
   const [selectedImages, setSelectedImages] = useState<string[]>([]); 
@@ -31,10 +34,14 @@ export default function Page() {
 
   const handleUpload = async () => {
     if (urls.length >= MAX_UPLOADS) {
-      Toast.show({
-        type: 'error',
-        text1: 'Upload Limit Reached',
-        text2: `You can upload up to ${MAX_UPLOADS} images.`,
+      await fetch(`${API_BASE_URL}/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: expoPushToken,
+          title: 'Upload Limit Reached',
+          body: `You can only upload ${MAX_UPLOADS} images 🛑`,
+        }),
       });
       return;
     }
@@ -71,17 +78,30 @@ export default function Page() {
       if (uploadResponse.ok) {
         handleAddUrl(data.url);
         setUrls(prev => [...prev, data.url]);
-        Toast.show({
-          type: 'success',
-          text1: 'Upload Successful',
-          text2: 'Your image has been uploaded 🎉',
-        });
+         await fetch(`${API_BASE_URL}/push/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: expoPushToken,
+            title: 'Upload Successful',
+            body: 'Your image has been uploaded 🎉',
+          }),
+         });
+
       } else {
         throw new Error(data.error || 'Upload failed');
       }
     } catch (error) {
       console.error('Error uploading media:', error);
-      Alert.alert('Upload Error', 'Failed to upload image.');
+      await fetch(`${API_BASE_URL}/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: expoPushToken,
+          title: 'Upload Error',
+          body: 'Unexpected error occurred while uploading ❌',
+        }),
+      });
     }finally {
     setIsLoading(false);
    }
@@ -140,10 +160,14 @@ export default function Page() {
         // Update UI only if both deletions were successful
         setUrls(dbData.user.urls);
       } catch (error) {
-        Toast.show({
-          type: 'error',
-          text1: 'Upload Failed',
-          text2: 'Something went wrong while deleting.',
+        await fetch(`${API_BASE_URL}/push/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: expoPushToken,
+            title: 'Delete Failed',
+            body: 'Something went wrong while deleting ❌',
+          }),
         });
       }
     }
