@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
 import { Stack } from "expo-router";
 import { tokenCache } from '@/cache'
@@ -35,7 +36,7 @@ TaskManager.defineTask(
 Notifications.registerTaskAsync(BACKGROUND_NOTIFICATION_TASK);
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+ 
 
 export default function Layout() {
   
@@ -43,6 +44,13 @@ export default function Layout() {
   if (!publishableKey) {
     throw new Error('Add EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY to your .env file')
   }
+
+  useEffect(() => {
+    const hideSplash = async () => {
+      await SplashScreen.hideAsync();
+    };
+    hideSplash();
+  }, []);
 
   return (
      <NotificationProvider>

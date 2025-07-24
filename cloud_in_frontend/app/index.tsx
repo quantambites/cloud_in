@@ -9,6 +9,7 @@ import SidebarModal from './components/Sidebar';
 import Toast from 'react-native-toast-message';
 import { useNotification } from "@/context/NotificationContext";
 import Constants from 'expo-constants';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 export default function Page() {
@@ -17,7 +18,7 @@ export default function Page() {
   const [urls, setUrls] = useState<string[]>([]);
   const [selectedImages, setSelectedImages] = useState<string[]>([]); 
   const [isLoading, setIsLoading] = useState(false);
-
+  const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(false);
   const MAX_UPLOADS = parseInt(process.env.EXPO_PUBLIC_MAX_UPLOADS || '2');
   const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL;
@@ -249,8 +250,8 @@ export default function Page() {
                 onPress={handleUpload}
                 style={{
                   position: 'absolute',
-                  bottom: 24,
-                  right: 24,
+                  bottom: insets.bottom + 20,
+                  right: 20,
                   backgroundColor: '#1e88e5',
                   width: 60,
                   height: 60,

@@ -15,6 +15,7 @@ CloudIn is a full-stack application designed to let users upload, view, and mana
   - [Backend `application.properties`](#backend-applicationproperties)
 - [📂 Project Structure](#-project-structure)
 - [🛠️ Technologies Used](#️-technologies-used)
+- [🔗 Live Project](#-live-project)
 
 ---
 
@@ -124,7 +125,7 @@ cloud_in/
 
 ## 🛠️ Technologies Used
 
-- **Frontend:** Expo + React Native + NativeWind
+- **Frontend:** Expo + React Native + NativeWind + React push Notification
 - **Backend:** Spring Boot + MongoDB + Cloudinary
 - **Auth:** Clerk.dev
 - **Database:** MongoDB Atlas
@@ -132,6 +133,14 @@ cloud_in/
 
 
 ---
+
+### 🔗 Live Project
+
+[https://drive.google.com/drive/folders/15RdvFFPdvnVCiRFUjsaIUZptgxrxjvEB?usp=sharing](https://drive.google.com/drive/folders/15RdvFFPdvnVCiRFUjsaIUZptgxrxjvEB?usp=sharing)
+
+
+
+
 <p align="center">
   <img src="WhatsApp Image 2025-06-12 at 15.05.18_6d629820.jpg" alt="App Screenshot" width="500"/>
 </p>
